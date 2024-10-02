@@ -1,4 +1,7 @@
+import 'package:adopt_me/views/home_screen.dart';
+import 'package:adopt_me/views/log_in.dart';
 import 'package:adopt_me/views/onboarding_screen.dart';
+import 'package:adopt_me/views/sign_up.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -32,7 +35,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const OnboardingScreen(),
+      home: const HomeScreen(),
     );
   }
 }

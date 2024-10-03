@@ -94,10 +94,68 @@ class HomeScreen extends StatelessWidget {
 
 
       ),
-      body: const SingleChildScrollView(
+      body: SingleChildScrollView(
         child: Column(
+          
           children: [
-            Text("data")
+            Image.asset(AppImages.dogsHome),
+            Container(
+              margin: EdgeInsets.only(top: 20, bottom: 20),
+              child: const Row(
+                children: [
+                  Text("Categories", style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),),
+                ],
+              ),
+            ),
+            Row(
+              
+              children: [
+                Container(
+                  width: 80,
+                  margin: EdgeInsets.only(left: 20),
+                  decoration: BoxDecoration(
+                    color: Colors.pink,
+                    // border: Border.all(width: 1),
+                    borderRadius: BorderRadius.circular(10)
+                  ),
+                  padding: EdgeInsets.all(10),
+                  child: Text("Dogs", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold), textAlign: TextAlign.center)
+                  ),
+                Container(
+                  width: 80,
+                  margin: EdgeInsets.only(left: 20),
+                  decoration: BoxDecoration(
+                    color: Colors.pink,
+                    // border: Border.all(width: 1),
+                    borderRadius: BorderRadius.circular(10)
+                  ),
+                  padding: EdgeInsets.all(10),
+                  child: Text("Cats", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold), textAlign: TextAlign.center,)
+                  ),
+                Container(
+                  width: 80,
+                  margin: EdgeInsets.only(left: 20),
+                  decoration: BoxDecoration(
+                    color: Colors.pink,
+                    // border: Border.all(width: 1),
+                    borderRadius: BorderRadius.circular(10)
+                  ),
+                  padding: EdgeInsets.all(10),
+                  child: Text("Fish", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold), textAlign: TextAlign.center,)
+                  ),
+                  
+                  
+              ],
+              
+            ),
+            Container(
+              margin: EdgeInsets.only(top: 20, bottom: 20),
+              child: const Row(
+                children: [
+                  Text("Popular pets", style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),),
+                ],
+              ),
+            ),
           ],
         ),
       ),

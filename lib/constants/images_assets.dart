@@ -4,4 +4,5 @@ class AppImages {
   static String facebookIcon = "assets/images/facebook_icon.png";
   static String twitterIcon = "assets/images/twitter_logo.png";
   static String personIcon = "assets/images/icon_person.png";
+  static String dogsHome = "assets/images/dogs_home.png";
 }

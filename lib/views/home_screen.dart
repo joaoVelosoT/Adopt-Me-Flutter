@@ -1,3 +1,4 @@
+import 'package:adopt_me/constants/images_assets.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -7,8 +8,14 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return  Scaffold(
       appBar: AppBar(
-      
-        leading: Icon(Icons.account_circle_outlined, size: 50,),
+        
+        
+        leading: 
+        
+        Padding(
+          padding: const EdgeInsets.only(left: 10),
+          child: Image.asset(AppImages.personIcon, width: 70, height: 60),
+        ),
         title: const Column(
           children: [
             Row(
@@ -28,8 +35,8 @@ class HomeScreen extends StatelessWidget {
         
         actions: [
           Container(
-            width: 33,
-            height: 33,
+            width: 50,
+                height: 44,
             margin: EdgeInsets.only(right: 10),
             decoration: BoxDecoration(color: Colors.pink, borderRadius: BorderRadius.circular(5)),
             child: const Icon(Icons.person_2_outlined, color: Colors.white,))
@@ -48,29 +55,37 @@ class HomeScreen extends StatelessWidget {
 
               Container(
                 width: 300,
-                height: 30,
+                height: 44,
+                padding: EdgeInsets.only(left: 10),
                 decoration: BoxDecoration(
-                      
+                        
                         border: Border.all(width: 0.5, color: Colors.pink),
                         borderRadius: BorderRadius.circular(10),
                         
                       ),
                 child: TextField(
-                  
+                
                   decoration: InputDecoration(
-                    
+                      
                     suffixIcon: Container(
+                      width: 50,
                       decoration: BoxDecoration(color: Colors.pink, borderRadius: BorderRadius.circular(10)),
-                      child: const Icon(Icons.search),
+                      child: const Icon(Icons.search, color: Colors.white,),
                       ),
                     border: InputBorder.none,
                
-                  labelText: "Search",
+                  hintText: "Search",
+                  hintStyle: TextStyle()
 
                 ),
                 ),
               ),
-              
+              Container(
+                width: 50,
+                height: 44,
+                margin: EdgeInsets.only(left: 10),
+                decoration: BoxDecoration(color: Colors.pink, borderRadius: BorderRadius.circular(10)),
+                child: Icon(Icons.manage_search_rounded, color: Colors.white,))
 
             ],
           ),

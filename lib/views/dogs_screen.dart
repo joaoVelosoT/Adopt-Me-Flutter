@@ -1,17 +1,15 @@
-import 'package:adopt_me/constants/images_assets.dart';
 import 'package:adopt_me/widgets/app_bar_widget.dart';
 import 'package:adopt_me/widgets/bottom_navigator_widget.dart';
 import 'package:adopt_me/widgets/card_pets.dart';
-import 'package:adopt_me/widgets/categoria.dart';
 import 'package:adopt_me/widgets/categorias_container.dart';
 import 'package:flutter/material.dart';
 
-class HomeScreen extends StatelessWidget {
-  const HomeScreen({super.key});
+class DogsScreen extends StatelessWidget {
+  
+  const DogsScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-
     const dogs = [
       {
         "imagem" : "",
@@ -39,45 +37,16 @@ class HomeScreen extends StatelessWidget {
       },
     ];
 
-
-
     return Scaffold(
       appBar: const AppBarWidget(),
       body: SingleChildScrollView(
         child: Column(
           children: [
-            Image.asset(AppImages.dogsHome),
-            Container(
-              margin: EdgeInsets.only(top: 20, bottom: 20, left: 20),
-              child: const Row(
-                children: [
-                  Text(
-                    "Categories",
-                    style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-                  ),
-                ],
-              ),
-            ),
-
             const CategoriasContainer(),
-
-  
-            Container(
-              margin: EdgeInsets.only(top: 20, bottom: 5, left: 20),
-              child: const Row(
-                children: [
-                  Text(
-                    "Popular pets",
-                    style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-                  ),
-                ],
-              ),
-            ),
-
-          GridView.builder(
+            GridView.builder(
                 shrinkWrap: true,
                 primary: false,
-                physics: NeverScrollableScrollPhysics(),
+                physics: const NeverScrollableScrollPhysics(),
                 itemCount: dogs.length, //qtd de produtos
                 gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 2,
@@ -87,26 +56,10 @@ class HomeScreen extends StatelessWidget {
                   return const CardPet();
                 },
               ),
-              
-
-          //  const BottomNavigationBarExample()
           ],
-          
         ),
-          
       ),
-      
-      bottomNavigationBar: BottomNavigatorWidget(), 
+      bottomNavigationBar: const BottomNavigatorWidget(),
     );
   }
- 
 }
-
-
-
-
-
-
-
-
-

@@ -1,4 +1,5 @@
 import 'package:adopt_me/constants/images_assets.dart';
+import 'package:adopt_me/views/log_in.dart';
 import 'package:flutter/material.dart';
 
 class OnboardingScreen extends StatelessWidget {
@@ -50,14 +51,18 @@ class OnboardingScreen extends StatelessWidget {
             
             ElevatedButton(
               
-              onPressed: () {},
+              onPressed: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(builder: (context) => LogIn())
+                );
+              },
               style: const ButtonStyle(
                 fixedSize: WidgetStatePropertyAll(Size.fromWidth(207)),
                 padding: WidgetStatePropertyAll(EdgeInsets.all(15)),
                 backgroundColor: WidgetStatePropertyAll(Color.fromRGBO(255, 62, 154, 100)),
                 // backgroundColor: Color.fromRGBO(255, 62, 154, 100)
               ),
-              child: Text(
+              child: const Text(
                 "Get Started",
                 style: TextStyle(
                   color: Colors.white,

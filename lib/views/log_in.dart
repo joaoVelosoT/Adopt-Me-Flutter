@@ -1,4 +1,5 @@
 import 'package:adopt_me/constants/images_assets.dart';
+import 'package:adopt_me/views/home_screen.dart';
 import 'package:flutter/material.dart';
 
 class LogIn extends StatelessWidget {
@@ -97,7 +98,11 @@ class LogIn extends StatelessWidget {
                     Container(
                       margin: EdgeInsets.only(top: 50),
                       child: ElevatedButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.of(context).push(
+                    MaterialPageRoute(builder: (context) => HomeScreen())
+                );
+                          },
                           style: const ButtonStyle(
                             fixedSize:
                                 WidgetStatePropertyAll(Size.fromWidth(207)),

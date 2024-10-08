@@ -10,8 +10,15 @@ class PetDetails extends StatelessWidget {
   Widget build(BuildContext context) {
     return  Scaffold(
       appBar: AppBar(
-        actions: const [
-          Icon(Icons.favorite)
+        actions: [
+          ElevatedButton(
+            style: ButtonStyle(
+              backgroundColor: WidgetStatePropertyAll(Colors.white),
+              elevation: WidgetStatePropertyAll(0)
+              ),
+            onPressed: () {  },
+            child: Icon(Icons.favorite_border,size: 35,),
+          )
         ],
       ),
       body:  SingleChildScrollView(

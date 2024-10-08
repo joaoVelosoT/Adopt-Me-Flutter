@@ -16,12 +16,14 @@ class BottomNavigatorWidget extends StatelessWidget {
         BottomNavigationBarItem(
           icon: Icon(Icons.pets),
           label: 'Pets',
+
         ),
         BottomNavigationBarItem(
           icon: Icon(Icons.favorite),
           label: 'Favorites',
         ),
       ],
+
     );
   }
 }

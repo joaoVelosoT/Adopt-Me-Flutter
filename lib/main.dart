@@ -1,5 +1,7 @@
+import 'package:adopt_me/views/add_pet.dart';
 import 'package:adopt_me/views/cats_screen.dart';
 import 'package:adopt_me/views/dogs_screen.dart';
+import 'package:adopt_me/views/favorites_screen.dart';
 import 'package:adopt_me/views/home_screen.dart';
 import 'package:adopt_me/views/log_in.dart';
 import 'package:adopt_me/views/onboarding_screen.dart';

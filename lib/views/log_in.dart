@@ -94,6 +94,7 @@ class LogIn extends StatelessWidget {
                               border: InputBorder.none
                               // border
                               ),
+
                         ),
                       ),
                       

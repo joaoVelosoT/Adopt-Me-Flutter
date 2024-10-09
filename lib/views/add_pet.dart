@@ -11,90 +11,219 @@ class AddPet extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return  Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
-        
-        title: const Text("Adicionar pet"),
+        backgroundColor: Colors.white,
+        title: const Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Text("Add pet", style: TextStyle(color: Colors.pink, fontWeight: FontWeight.bold, fontSize: 40),),
+            Icon(Icons.pets, color: Colors.pink,size: 40 ,)
+          ],
+        ),
       ),
       body: SingleChildScrollView(
+        
         child: Column(
+          
           children: [
-            const Padding(
-              padding: EdgeInsets.all(16.0),
-              child: TextField(
-                      obscureText: true,
-                      decoration: InputDecoration(
-                        border: OutlineInputBorder(),
-                        labelText: 'Name',
-                      ),
-                    ),
+
+            Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Container(
+                decoration: BoxDecoration(
+                  border: Border.all(width: 1, color: Colors.pink),
+                  borderRadius: BorderRadius.circular(10),
+
+                ),
+                child: TextField(
+                          decoration: InputDecoration(
+                              icon: Container(
+                                  margin: const EdgeInsets.only(left: 15),
+                                  child: const Icon(
+                                    Icons.text_fields,
+                                    size: 25,
+                                    color: Color.fromRGBO(42, 42, 42, 0.612),
+                                  )),
+                              hintText: "Name",
+                              hintStyle: const TextStyle(
+                                  color: Color.fromRGBO(42, 42, 42, 0.612)),
+                              border: InputBorder.none
+                              // border
+                              ),
+                        ),
+                        
+              ),
             ),
-            const Padding(
-              padding: EdgeInsets.all(16.0),
-              child: TextField(
-                      obscureText: true,
-                      decoration: InputDecoration(
-                        border: OutlineInputBorder(),
-                        labelText: 'Age',
-                      ),
-                    ),
+            Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Container(
+                decoration: BoxDecoration(
+                  border: Border.all(width: 1, color: Colors.pink),
+                  borderRadius: BorderRadius.circular(10),
+
+                ),
+                child: TextField(
+                          decoration: InputDecoration(
+                              icon: Container(
+                                  margin: const EdgeInsets.only(left: 15),
+                                  child: const Icon(
+                                    Icons.calendar_month,
+                                    size: 25,
+                                    color: Color.fromRGBO(42, 42, 42, 0.612),
+                                  )),
+                              hintText: "Age",
+                              hintStyle: const TextStyle(
+                                  color: Color.fromRGBO(42, 42, 42, 0.612)),
+                              border: InputBorder.none
+                              // border
+                              ),
+                        ),
+                        
+              ),
             ),
-            const Padding(
-              padding: EdgeInsets.all(16.0),
-              child: TextField(
-                      obscureText: true,
-                      decoration: InputDecoration(
-                        border: OutlineInputBorder(),
-                        labelText: 'Location',
-                      ),
-                    ),
+            Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Container(
+                decoration: BoxDecoration(
+                  border: Border.all(width: 1, color: Colors.pink),
+                  borderRadius: BorderRadius.circular(10),
+
+                ),
+                child: TextField(
+                          decoration: InputDecoration(
+                              icon: Container(
+                                  margin: const EdgeInsets.only(left: 15),
+                                  child: const Icon(
+                                    Icons.location_on,
+                                    size: 25,
+                                    color: Color.fromRGBO(42, 42, 42, 0.612),
+                                  )),
+                              hintText: "Location",
+                              hintStyle: const TextStyle(
+                                  color: Color.fromRGBO(42, 42, 42, 0.612)),
+                              border: InputBorder.none
+                              // border
+                              ),
+                        ),
+                        
+              ),
             ),
-            const Padding(
-              padding: EdgeInsets.all(16.0),
-              child: TextField(
-                      obscureText: true,
-                      decoration: InputDecoration(
-                        border: OutlineInputBorder(),
-                        labelText: 'Sex',
-                      ),
-                    ),
+            Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Container(
+                decoration: BoxDecoration(
+                  border: Border.all(width: 1, color: Colors.pink),
+                  borderRadius: BorderRadius.circular(10),
+
+                ),
+                child: TextField(
+                          decoration: InputDecoration(
+                              icon: Container(
+                                  margin: const EdgeInsets.only(left: 15),
+                                  child: const Icon(
+                                    Icons.pets,
+                                    size: 25,
+                                    color: Color.fromRGBO(42, 42, 42, 0.612),
+                                  )),
+                                  
+                              hintText: "Sex",
+                              hintStyle: const TextStyle(
+                                  color: Color.fromRGBO(42, 42, 42, 0.612)),
+                              border: InputBorder.none
+                              // border
+                              ),
+                        ),
+                        
+              ),
             ),
-            const Padding(
-              padding: EdgeInsets.all(16.0),
-              child: TextField(
-                      obscureText: true,
-                      decoration: InputDecoration(
-                        border: OutlineInputBorder(),
-                        labelText: 'Breed',
-                      ),
-                    ),
+            Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Container(
+                decoration: BoxDecoration(
+                  border: Border.all(width: 1, color: Colors.pink),
+                  borderRadius: BorderRadius.circular(10),
+
+                ),
+                child: TextField(
+                          decoration: InputDecoration(
+                              icon: Container(
+                                  margin: const EdgeInsets.only(left: 15),
+                                  child: const Icon(
+                                    Icons.pets,
+                                    size: 25,
+                                    color: Color.fromRGBO(42, 42, 42, 0.612),
+                                  )),
+                                  
+                              hintText: "Breed",
+                              hintStyle: const TextStyle(
+                                  color: Color.fromRGBO(42, 42, 42, 0.612)),
+                              border: InputBorder.none
+                              // border
+                              ),
+                        ),
+                        
+              ),
             ),
-            const Padding(
-              padding: EdgeInsets.all(16.0),
-              child: TextField(
-                      obscureText: true,
-                      decoration: InputDecoration(
-                        border: OutlineInputBorder(),
-                        labelText: 'Color',
-                      ),
-                    ),
+            Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Container(
+                decoration: BoxDecoration(
+                  border: Border.all(width: 1, color: Colors.pink),
+                  borderRadius: BorderRadius.circular(10),
+
+                ),
+                child: TextField(
+                          decoration: InputDecoration(
+                              icon: Container(
+                                  margin: const EdgeInsets.only(left: 15),
+                                  child: const Icon(
+                                    Icons.pets,
+                                    size: 25,
+                                    color: Color.fromRGBO(42, 42, 42, 0.612),
+                                  )),
+                                  
+                              hintText: "Color",
+                              hintStyle: const TextStyle(
+                                  color: Color.fromRGBO(42, 42, 42, 0.612)),
+                              border: InputBorder.none
+                              // border
+                              ),
+                        ),
+                        
+              ),
             ),
-            const Padding(
-              padding: EdgeInsets.all(16.0),
-              child: TextField(
-                      obscureText: true,
-                      decoration: InputDecoration(
-                        border: OutlineInputBorder(),
-                        labelText: 'Weight',
-                      ),
+            
+
+            
+            Container(
+                        width: 200,
+                        decoration: BoxDecoration(
+                          // border: Border.all(width: 2),
+                          // borderRadius: BorderRadius.circular(233)
+                        ),
+                        child: ElevatedButton(
+                          onPressed: (){},
+                          child: const Text("Add pet", style: TextStyle(color: Colors.pink, fontWeight: FontWeight.bold),),
+                          style:  ElevatedButton.styleFrom(
+                            elevation: 0,
+                    shape: RoundedRectangleBorder(
+                      // side: 1,
+                      borderRadius: BorderRadius.circular(10),
+                      side: const BorderSide(width: 1, color: Colors.pink),
+                      
+                       // Sem bordas arredondadas
                     ),
-            ),
-            ElevatedButton(onPressed: () {}, child: const Text("Criar pet"))
+                    backgroundColor: Colors.white
+                                ),
+                          ),
+                      ),
           ],
           
         ),
         
       ),
-      bottomNavigationBar: BottomNavigatorWidget(), 
+      // bottomNavigationBar: BottomNavigatorWidget(), 
     );
   }
 }

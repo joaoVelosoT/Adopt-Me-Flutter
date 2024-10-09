@@ -59,7 +59,7 @@ class CatsScreen extends StatelessWidget {
           ],
         ),
       ),
-      bottomNavigationBar: const BottomNavigatorWidget(),
+      // bottomNavigationBar: const BottomNavigatorWidget(),
     );
   }
 }

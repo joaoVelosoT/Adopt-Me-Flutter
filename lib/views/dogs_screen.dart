@@ -38,11 +38,13 @@ class DogsScreen extends StatelessWidget {
     ];
 
     return Scaffold(
-      appBar: const AppBarWidget(),
+      appBar: AppBar(
+        title: const Text("Dogs"),
+      ),
       body: SingleChildScrollView(
         child: Column(
           children: [
-            const CategoriasContainer(),
+            // const CategoriasContainer(),
             GridView.builder(
                 shrinkWrap: true,
                 primary: false,
@@ -59,7 +61,7 @@ class DogsScreen extends StatelessWidget {
           ],
         ),
       ),
-      bottomNavigationBar: const BottomNavigatorWidget(),
+      // bottomNavigationBar: const BottomNavigatorWidget(),
     );
   }
 }

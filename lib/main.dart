@@ -1,11 +1,13 @@
 import 'package:adopt_me/views/add_pet.dart';
 import 'package:adopt_me/views/cats_screen.dart';
 import 'package:adopt_me/views/dogs_screen.dart';
+import 'package:adopt_me/views/edit_profile.dart';
 import 'package:adopt_me/views/favorites_screen.dart';
 import 'package:adopt_me/views/home_screen.dart';
 import 'package:adopt_me/views/log_in.dart';
 import 'package:adopt_me/views/onboarding_screen.dart';
 import 'package:adopt_me/views/pet_details.dart';
+import 'package:adopt_me/views/profile_screen.dart';
 import 'package:adopt_me/views/sign_up.dart';
 import 'package:flutter/material.dart';
 

@@ -1,4 +1,5 @@
 import 'package:adopt_me/constants/images_assets.dart';
+import 'package:adopt_me/views/profile_screen.dart';
 import 'package:flutter/material.dart';
 
 class AppBarWidget extends StatelessWidget implements PreferredSizeWidget {
@@ -38,19 +39,28 @@ class AppBarWidget extends StatelessWidget implements PreferredSizeWidget {
               ),
             ],
           ),
+          
         ],
       ),
       actions: [
-        Container(
-            width: 50,
-            height: 44,
-            margin: const EdgeInsets.only(right: 10),
-            decoration: BoxDecoration(
-                color: Colors.pink, borderRadius: BorderRadius.circular(5)),
-            child: const Icon(
-              Icons.person_2_outlined,
-              color: Colors.white,
-            ))
+        ElevatedButton(
+
+          style: ButtonStyle(elevation: WidgetStatePropertyAll(0), backgroundColor: WidgetStatePropertyAll(Colors.white)),
+          onPressed: () {  
+            Navigator.of(context).push(
+                      MaterialPageRoute(builder: (context) => ProfileScreen()));
+          },
+          child: Container(
+              width: 50,
+              height: 44,
+              margin: const EdgeInsets.only(right: 10),
+              decoration: BoxDecoration(
+                  color: Colors.pink, borderRadius: BorderRadius.circular(5)),
+              child: const Icon(
+                Icons.person_2_outlined,
+                color: Colors.white,
+              )),
+        )
       ],
       bottom: PreferredSize(
         preferredSize: const Size.fromHeight(100),

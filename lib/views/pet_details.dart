@@ -103,7 +103,7 @@ class PetDetails extends StatelessWidget {
         ),
         
       ),
-      bottomNavigationBar: BottomNavigatorWidget(), 
+      // bottomNavigationBar: BottomNavigatorWidget(), 
       
     );
   }

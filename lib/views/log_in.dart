@@ -1,13 +1,63 @@
+import 'dart:convert';
+
 import 'package:adopt_me/constants/images_assets.dart';
 import 'package:adopt_me/views/home_screen.dart';
 import 'package:adopt_me/views/sign_up.dart';
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
 
-class LogIn extends StatelessWidget {
+// import 'package:http/http.dart' as http;
+
+class LogIn extends StatefulWidget {
   const LogIn({super.key});
 
   @override
+  State<LogIn> createState() => _LogInState();
+}
+
+class _LogInState extends State<LogIn> {
+  String msgErro = "";
+  TextEditingController emailController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
+
+  @override
   Widget build(BuildContext context) {
+    // var msgErro = "";
+
+    TextEditingController emailController = TextEditingController();
+    TextEditingController passwordController = TextEditingController();
+
+    void fazerLogin() async {
+      
+      if (emailController.text.isEmpty || passwordController.text.isEmpty) {
+        return setState(() => {
+          msgErro = "Valide seus dados"
+        });
+      }
+
+      var client = http.Client();
+      var url = 'https://pet-adopt-dq32j.ondigitalocean.app/user/login';
+      var data = {
+        "email": emailController.text,
+        "password": passwordController.text
+      };
+      try {
+        var response = await client.post(Uri.parse(url),
+            headers: {'Content-Type': 'application/json'},
+            body: json.encode(data));
+        var responseData = jsonDecode(response.body);
+        print(responseData['success']);
+
+        if (responseData['sucess'] != true) {
+          print(responseData['message']);
+
+          setState(() {msgErro = responseData['message'];});
+        }
+      } finally {
+        client.close();
+      }
+    }
+
     return Scaffold(
       appBar: AppBar(),
       body: SingleChildScrollView(
@@ -45,6 +95,7 @@ class LogIn extends StatelessWidget {
                           borderRadius: BorderRadius.circular(10),
                         ),
                         child: TextField(
+                          controller: emailController,
                           decoration: InputDecoration(
                               icon: Container(
                                   margin: const EdgeInsets.only(left: 15),
@@ -80,6 +131,7 @@ class LogIn extends StatelessWidget {
                           borderRadius: BorderRadius.circular(10),
                         ),
                         child: TextField(
+                          controller: passwordController,
                           decoration: InputDecoration(
                               icon: Container(
                                   margin: const EdgeInsets.only(left: 15),
@@ -94,33 +146,33 @@ class LogIn extends StatelessWidget {
                               border: InputBorder.none
                               // border
                               ),
-
                         ),
                       ),
-                      
+                      Text(msgErro),
                       Container(
                         margin: EdgeInsets.only(top: 50),
                         child: ElevatedButton(
                             onPressed: () {
-                              Navigator.of(context).push(
-                      MaterialPageRoute(builder: (context) => HomeScreen())
-                  );
+                              fazerLogin();
+                              // Navigator.of(context).push(MaterialPageRoute(
+                              //     builder: (context) => HomeScreen()));
                             },
                             style: const ButtonStyle(
                               fixedSize:
                                   WidgetStatePropertyAll(Size.fromWidth(207)),
-                              padding: WidgetStatePropertyAll(EdgeInsets.all(15)),
+                              padding:
+                                  WidgetStatePropertyAll(EdgeInsets.all(15)),
                               backgroundColor: WidgetStatePropertyAll(
                                   Color.fromRGBO(255, 62, 154, 100)),
                               // backgroundColor: Color.fromRGBO(255, 62, 154, 100)
                             ),
                             child: const Text(
                               "Log in",
-                              style: TextStyle(color: Colors.white, fontSize: 20),
+                              style:
+                                  TextStyle(color: Colors.white, fontSize: 20),
                             )),
                       ),
                       Container(
-                        
                         margin: EdgeInsets.only(top: 20),
                         width: 200,
                         child: Row(
@@ -133,20 +185,29 @@ class LogIn extends StatelessWidget {
                         ),
                       ),
                       Container(
-                        margin: EdgeInsets.only(top: 20),
-                        child:  Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text("Don't have an account?", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 14),),
-                            GestureDetector(
-                              child: Text(" Create", style: TextStyle(fontWeight: FontWeight.bold, color: Color.fromRGBO(255, 62, 154, 100), fontSize: 14)),
-                              onTap: () {
-                                Navigator.of(context).push(
-                      MaterialPageRoute(builder: (context) => SignUp()));
-                              },
+                          margin: EdgeInsets.only(top: 20),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text(
+                                "Don't have an account?",
+                                style: TextStyle(
+                                    fontWeight: FontWeight.bold, fontSize: 14),
+                              ),
+                              GestureDetector(
+                                child: Text(" Create",
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        color:
+                                            Color.fromRGBO(255, 62, 154, 100),
+                                        fontSize: 14)),
+                                onTap: () {
+                                  Navigator.of(context).push(MaterialPageRoute(
+                                      builder: (context) => SignUp()));
+                                },
                               )
-                          ],
-                        ))
+                            ],
+                          ))
                     ],
                   )),
             ],

@@ -55,7 +55,7 @@ class DogsScreen extends StatelessWidget {
                   childAspectRatio: 0.9,
                 ),
                 itemBuilder: (context, index) {
-                  return const CardPet();
+                  // return const CardPet(name: 'nome da api',);
                 },
               ),
           ],

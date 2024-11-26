@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:adopt_me/constants/images_assets.dart';
 import 'package:adopt_me/widgets/app_bar_widget.dart';
 import 'package:adopt_me/widgets/bottom_navigator_widget.dart';
@@ -5,41 +7,53 @@ import 'package:adopt_me/widgets/card_pets.dart';
 import 'package:adopt_me/widgets/categoria.dart';
 import 'package:adopt_me/widgets/categorias_container.dart';
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 
   @override
+  State<HomeScreen> createState() => HomeScreenState();
+}
+
+class HomeScreenState extends State<HomeScreen> {
+  List<Map<String, dynamic>> pets = [];
+  @override
+  void getPets() async {
+    var client = http.Client();
+
+    var url = 'https://pet-adopt-dq32j.ondigitalocean.app/pet/pets';
+
+    try {
+      var response = await client.get(
+        Uri.parse(url),
+      );
+
+      var responseData = jsonDecode(response.body);
+
+      // print(responseData['pets']);
+
+      for (var element in responseData['pets']) {
+        setState(() {
+          pets.add(element);
+        });
+        // print(element['_id']);
+      }
+    } finally {
+      client.close();
+    }
+  }
+
+  void initState() {
+    // TODO: implement initState
+    getPets();
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
-
-    const dogs = [
-      {
-        "imagem" : "",
-        "idade" : "3",
-      },
-      {
-        "imagem" : "",
-        "idade" : "3",
-      },
-      {
-        "imagem" : "",
-        "idade" : "3",
-      },
-      {
-        "imagem" : "",
-        "idade" : "3",
-      },
-      {
-        "imagem" : "",
-        "idade" : "3",
-      },
-      {
-        "imagem" : "",
-        "idade" : "3",
-      },
-    ];
-
-
+    print(pets.length);
+    // getPets();
 
     return Scaffold(
       appBar: const AppBarWidget(),
@@ -61,7 +75,6 @@ class HomeScreen extends StatelessWidget {
 
             const CategoriasContainer(),
 
-  
             Container(
               margin: EdgeInsets.only(top: 20, bottom: 5, left: 20),
               child: const Row(
@@ -74,30 +87,27 @@ class HomeScreen extends StatelessWidget {
               ),
             ),
 
-          GridView.builder(
-                shrinkWrap: true,
-                primary: false,
-                physics: NeverScrollableScrollPhysics(),
-                itemCount: dogs.length, //qtd de produtos
-                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 2,
-                  childAspectRatio: 0.9,
-                ),
-                itemBuilder: (context, index) {
-                  return const CardPet();
-                },
+            GridView.builder(
+              shrinkWrap: true,
+              primary: false,
+              physics: NeverScrollableScrollPhysics(),
+              itemCount: pets.length, //qtd de produtos
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 2,
+                childAspectRatio: 0.9,
               ),
-              
+              itemBuilder: (context, index) {
+                print(pets[index]['images']);
+                return CardPet(name: pets[index]['name'], image: pets[index]['images'][index]);
+              },
+            ),
 
-          //  const BottomNavigationBarExample()
+            //  const BottomNavigationBarExample()
           ],
-          
         ),
-          
       ),
-      
-      // bottomNavigationBar: BottomNavigatorWidget(), 
+
+      // bottomNavigationBar: BottomNavigatorWidget(),
     );
   }
- 
 }

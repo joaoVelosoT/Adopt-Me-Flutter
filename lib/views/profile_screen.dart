@@ -14,12 +14,12 @@ class ProfileScreen extends StatelessWidget {
         title: const Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text(
-              "Profile",
-              style: TextStyle(
-                fontSize: 25,
-              ),
-            ),
+            // Text(
+            //   "Profile",
+            //   style: TextStyle(
+            //     fontSize: 25,
+            //   ),
+            // ),
           ],
         ),
       ),

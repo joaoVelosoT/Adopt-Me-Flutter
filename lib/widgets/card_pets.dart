@@ -6,16 +6,19 @@ import 'package:flutter/material.dart';
 
 class CardPet extends StatelessWidget {
   final String name;
-  final String image;
+  final List<dynamic> images;
+  // final List<String> images;
   const CardPet({
     super.key,
     required this.name,
-    required this.image
+    required this.images
   });
 
 
   @override
   Widget build(BuildContext context) {
+
+  print(images[0].toString());
     return GestureDetector(
       child: Padding(
         padding: const EdgeInsets.all(8.0),
@@ -28,7 +31,7 @@ class CardPet extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Image.asset(AppImages.dog1),
+                Image.network(images[0].toString(), height: 156, width: 260, fit: BoxFit.cover,),
                 Row(
                   children: [
                     Container(

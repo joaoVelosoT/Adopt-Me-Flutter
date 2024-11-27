@@ -18,6 +18,7 @@ class HomeScreen extends StatefulWidget {
 
 class HomeScreenState extends State<HomeScreen> {
   List<Map<String, dynamic>> pets = [];
+
   @override
   void getPets() async {
     var client = http.Client();
@@ -32,12 +33,13 @@ class HomeScreenState extends State<HomeScreen> {
       var responseData = jsonDecode(response.body);
 
       // print(responseData['pets']);
+      print("element");
 
       for (var element in responseData['pets']) {
         setState(() {
           pets.add(element);
         });
-        // print(element['_id']);
+        
       }
     } finally {
       client.close();
@@ -97,8 +99,10 @@ class HomeScreenState extends State<HomeScreen> {
                 childAspectRatio: 0.9,
               ),
               itemBuilder: (context, index) {
-                print(pets[index]['images']);
-                return CardPet(name: pets[index]['name'], image: pets[index]['images'][index]);
+                
+                List<dynamic> images = pets[index]['images'];
+                // print(images);
+                return CardPet(name: pets[index]['name'], images: images);
               },
             ),
 

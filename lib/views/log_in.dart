@@ -22,7 +22,7 @@ class _LogInState extends State<LogIn> {
 
   @override
   Widget build(BuildContext context) {
-    // var msgErro = "";
+    
 
     TextEditingController emailController = TextEditingController();
     TextEditingController passwordController = TextEditingController();

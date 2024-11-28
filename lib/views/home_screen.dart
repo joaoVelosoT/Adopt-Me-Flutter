@@ -75,8 +75,7 @@ class HomeScreenState extends State<HomeScreen> {
   void initState() {
     // TODO: implement initState
     getUser();
-
-    // getPets();
+    getPets();
     super.initState();
   }
 

@@ -31,7 +31,7 @@ class CardPet extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Image.network(images[0].toString(), height: 156, width: 260, fit: BoxFit.cover,),
+                Image.network(images[0].toString(), height: 100, width: 220, fit: BoxFit.cover,),
                 Row(
                   children: [
                     Container(

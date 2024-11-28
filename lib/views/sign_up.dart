@@ -8,12 +8,16 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:localstorage/localstorage.dart';
 
-class SignUp extends StatelessWidget {
+class SignUp extends StatefulWidget {
   const SignUp({super.key});
-  
-
 
   @override
+  State<SignUp> createState() => _SignUpState();
+}
+
+class _SignUpState extends State<SignUp> {
+
+  String msgErro = "" ;
   Widget build(BuildContext context) {
     TextEditingController nameController = TextEditingController();
     TextEditingController phoneController = TextEditingController();
@@ -22,13 +26,14 @@ class SignUp extends StatelessWidget {
     TextEditingController confirmPassController = TextEditingController();
 
     void cadastro() async {
+      await initLocalStorage();
 
       var data = {
         "name": nameController.text,
         "phone": phoneController.text,
         "email": emailController.text,
         "password": passwordController.text,
-        "confirmpassword" : confirmPassController.text
+        "confirmpassword": confirmPassController.text
       };
 
       // print(data);
@@ -38,14 +43,27 @@ class SignUp extends StatelessWidget {
       var url = "https://pet-adopt-dq32j.ondigitalocean.app/user/register";
 
       try {
-        
         var response = await client.post(Uri.parse(url),
             headers: {'Content-Type': 'application/json'},
             body: json.encode(data));
 
         var responseData = jsonDecode(response.body);
 
-        print(responseData['token']);
+        if (responseData['token'] != null) {
+          localStorage.setItem("token", responseData['token']);
+          localStorage.setItem("_idUser", responseData['userId']);
+
+          Navigator.of(context)
+              .push(MaterialPageRoute(builder: (context) => HomeScreen()));
+        }
+
+        setState(() {
+          msgErro = responseData['message'];
+        });
+
+        
+
+        print(responseData);
 
         // if (responseData['sucess'] != true) {
         //   print(responseData['message']);
@@ -253,6 +271,7 @@ class SignUp extends StatelessWidget {
                               ),
                         ),
                       ),
+                        Text(msgErro),
                       Container(
                         margin: EdgeInsets.only(top: 50),
                         child: ElevatedButton(

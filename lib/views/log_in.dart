@@ -5,6 +5,7 @@ import 'package:adopt_me/views/home_screen.dart';
 import 'package:adopt_me/views/sign_up.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:localstorage/localstorage.dart';
 
 // import 'package:http/http.dart' as http;
 
@@ -22,17 +23,13 @@ class _LogInState extends State<LogIn> {
 
   @override
   Widget build(BuildContext context) {
-    
-
     TextEditingController emailController = TextEditingController();
     TextEditingController passwordController = TextEditingController();
 
     void fazerLogin() async {
-      
+      await initLocalStorage();
       if (emailController.text.isEmpty || passwordController.text.isEmpty) {
-        return setState(() => {
-          msgErro = "Valide seus dados"
-        });
+        return setState(() => {msgErro = "Valide seus dados"});
       }
 
       var client = http.Client();
@@ -46,13 +43,22 @@ class _LogInState extends State<LogIn> {
             headers: {'Content-Type': 'application/json'},
             body: json.encode(data));
         var responseData = jsonDecode(response.body);
-        print(responseData['success']);
 
-        if (responseData['sucess'] != true) {
-          print(responseData['message']);
+        if (responseData['token'] != null) {
+          var token = responseData['token'];
+          var idUser = responseData['userId'];
 
-          setState(() {msgErro = responseData['message'];});
+          Navigator.of(context)
+              .push(MaterialPageRoute(builder: (context) => HomeScreen()));
         }
+
+        if (responseData['success'] == false) {
+          setState(() {
+            msgErro = responseData['message'];
+          });
+        }
+
+        print(responseData);
       } finally {
         client.close();
       }

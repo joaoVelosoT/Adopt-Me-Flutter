@@ -6,9 +6,12 @@ import 'package:adopt_me/views/home_screen.dart';
 import 'package:adopt_me/views/log_in.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:localstorage/localstorage.dart';
 
 class SignUp extends StatelessWidget {
   const SignUp({super.key});
+  
+
 
   @override
   Widget build(BuildContext context) {
@@ -42,7 +45,7 @@ class SignUp extends StatelessWidget {
 
         var responseData = jsonDecode(response.body);
 
-        print(responseData);
+        print(responseData['token']);
 
         // if (responseData['sucess'] != true) {
         //   print(responseData['message']);

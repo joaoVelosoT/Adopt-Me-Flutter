@@ -38,7 +38,7 @@ class CatsScreen extends StatelessWidget {
     ];
 
     return Scaffold(
-      appBar: const AppBarWidget(),
+      appBar: AppBarWidget(name: 'teste',),
       body: SingleChildScrollView(
         child: Column(
           children: [

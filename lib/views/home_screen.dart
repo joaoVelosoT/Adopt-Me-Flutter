@@ -20,6 +20,7 @@ class HomeScreen extends StatefulWidget {
 
 class HomeScreenState extends State<HomeScreen> {
   List<Map<String, dynamic>> pets = [];
+  String nameUser = "";
 
   @override
   void getPets() async {
@@ -63,9 +64,12 @@ class HomeScreenState extends State<HomeScreen> {
     var url =
         "https://pet-adopt-dq32j.ondigitalocean.app/user/${idUser.toString()}";
     var response = await client.get(Uri.parse(url));
-
+    var responseData = jsonDecode(response.body);
     // print(localStorage.getItem("token"));
-    print(response.body);
+    // print(responseData['user']['name']);
+    setState(() {
+      nameUser = responseData['user']['name'];
+    });
   }
 
   void initState() {
@@ -82,7 +86,7 @@ class HomeScreenState extends State<HomeScreen> {
     // getPets();
 
     return Scaffold(
-      appBar: const AppBarWidget(),
+      appBar: AppBarWidget(name: nameUser,),
       body: SingleChildScrollView(
         child: Column(
           children: [

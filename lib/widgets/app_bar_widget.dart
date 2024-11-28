@@ -3,7 +3,8 @@ import 'package:adopt_me/views/profile_screen.dart';
 import 'package:flutter/material.dart';
 
 class AppBarWidget extends StatelessWidget implements PreferredSizeWidget {
-  const AppBarWidget({super.key});
+  final String name;
+  AppBarWidget({super.key, required this.name});
 
   @override
   Widget build(BuildContext context) {
@@ -15,17 +16,17 @@ class AppBarWidget extends StatelessWidget implements PreferredSizeWidget {
         padding: const EdgeInsets.only(left: 10),
         child: Image.asset(AppImages.personIcon, width: 70, height: 60),
       ),
-      title: const Column(
+      title:  Column(
         children: [
           Row(
             children: [
               Text(
-                "Hello João",
+                this.name,
                 style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
               ),
             ],
           ),
-          Row(
+          const Row(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
               Icon(
@@ -39,16 +40,16 @@ class AppBarWidget extends StatelessWidget implements PreferredSizeWidget {
               ),
             ],
           ),
-          
         ],
       ),
       actions: [
         ElevatedButton(
-
-          style: ButtonStyle(elevation: WidgetStatePropertyAll(0), backgroundColor: WidgetStatePropertyAll(Colors.white)),
-          onPressed: () {  
-            Navigator.of(context).push(
-                      MaterialPageRoute(builder: (context) => ProfileScreen()));
+          style: ButtonStyle(
+              elevation: WidgetStatePropertyAll(0),
+              backgroundColor: WidgetStatePropertyAll(Colors.white)),
+          onPressed: () {
+            Navigator.of(context)
+                .push(MaterialPageRoute(builder: (context) => ProfileScreen()));
           },
           child: Container(
               width: 50,

@@ -101,6 +101,8 @@ class HomeScreenState extends State<HomeScreen> {
               itemBuilder: (context, index) {
                 
                 List<dynamic> images = pets[index]['images'];
+
+                // Teste se retornou ao commit antigo
                 // print(images);
                 return CardPet(name: pets[index]['name'], images: images);
               },

@@ -28,6 +28,7 @@ class _LogInState extends State<LogIn> {
 
     void fazerLogin() async {
       await initLocalStorage();
+      // localStorage.clear();
       if (emailController.text.isEmpty || passwordController.text.isEmpty) {
         return setState(() => {msgErro = "Valide seus dados"});
       }
@@ -48,6 +49,8 @@ class _LogInState extends State<LogIn> {
           var token = responseData['token'];
           var idUser = responseData['userId'];
 
+          localStorage.setItem("token", token);
+          localStorage.setItem("_idUser", idUser);
           Navigator.of(context)
               .push(MaterialPageRoute(builder: (context) => HomeScreen()));
         }

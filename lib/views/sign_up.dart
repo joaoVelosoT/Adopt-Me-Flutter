@@ -27,7 +27,8 @@ class _SignUpState extends State<SignUp> {
 
     void cadastro() async {
       await initLocalStorage();
-
+      print(localStorage.getItem("token"));
+      // localStorage.clear();
       var data = {
         "name": nameController.text,
         "phone": phoneController.text,

@@ -39,7 +39,7 @@ class FavoritesScreen extends StatelessWidget {
         title: const Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Text("Favorites", style: TextStyle(color: Colors.pink, fontWeight: FontWeight.bold, fontSize: 40),),
+            Text("My pets", style: TextStyle(color: Colors.pink, fontWeight: FontWeight.bold, fontSize: 40),),
             Icon(Icons.pets, color: Colors.pink,size: 40 ,)
           ],
         ),

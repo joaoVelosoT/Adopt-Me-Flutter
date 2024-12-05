@@ -85,7 +85,9 @@ class HomeScreenState extends State<HomeScreen> {
     // getPets();
 
     return Scaffold(
-      appBar: AppBarWidget(name: nameUser,),
+      appBar: AppBarWidget(
+        name: nameUser,
+      ),
       body: SingleChildScrollView(
         child: Column(
           children: [
@@ -125,9 +127,11 @@ class HomeScreenState extends State<HomeScreen> {
                 crossAxisCount: 2,
                 childAspectRatio: 0.9,
               ),
-              itemBuilder: (context, index) {
+              itemBuilder: (context, index)  {
                 List<dynamic> images = pets[index]['images'];
 
+                
+                // print(images[0]);
                 // Teste se retornou ao commit antigo
                 // print(images);
                 return CardPet(name: pets[index]['name'], images: images);

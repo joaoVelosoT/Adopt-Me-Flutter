@@ -14,14 +14,14 @@ class AddPet extends StatefulWidget {
 }
 
 class _AddPetState extends State<AddPet> {
+  String msgError = "";
+
   Widget build(BuildContext context) {
     TextEditingController nameController = TextEditingController();
     TextEditingController ageController = TextEditingController();
     TextEditingController weightController = TextEditingController();
     TextEditingController colorController = TextEditingController();
     TextEditingController imageController = TextEditingController();
-
-    String msgError = "";
 
     void addPet() async {
       await initLocalStorage();
@@ -34,6 +34,7 @@ class _AddPetState extends State<AddPet> {
 
       var client = http.Client();
       var url = "https://pet-adopt-dq32j.ondigitalocean.app/pet/create";
+      
       var data = {
         "name": nameController.text,
         "color": colorController.text,
@@ -50,12 +51,12 @@ class _AddPetState extends State<AddPet> {
               'Content-Type': 'application/json',
               'Authorization': 'Bearer ${token}'
             });
-        print(response.body);
-
+        var responseData = json.decode(response.body);
         setState(() {
-          msgError = response.body;
+          msgError = responseData['message'] ;
         });
-      } catch (e) {
+        print(responseData['message']);
+      } catch (e) { 
         print(e);
       } finally {
         client.close();
@@ -63,6 +64,7 @@ class _AddPetState extends State<AddPet> {
     }
 
     ;
+    print(msgError);
 
     return Scaffold(
       backgroundColor: Colors.white,
@@ -124,6 +126,7 @@ class _AddPetState extends State<AddPet> {
                 ),
                 child: TextField(
                   controller: ageController,
+                  keyboardType: TextInputType.numberWithOptions(),
                   decoration: InputDecoration(
                       icon: Container(
                           margin: const EdgeInsets.only(left: 15),

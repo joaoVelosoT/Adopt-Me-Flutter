@@ -3,22 +3,38 @@ import 'dart:ffi';
 import 'package:adopt_me/constants/images_assets.dart';
 import 'package:adopt_me/views/pet_details.dart';
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
 
-class CardPet extends StatelessWidget {
+class CardPet extends StatefulWidget {
   final String name;
   final List<dynamic> images;
   // final List<String> images;
-  const CardPet({
-    super.key,
-    required this.name,
-    required this.images
-  });
-
+  const CardPet({super.key, required this.name, required this.images});
 
   @override
-  Widget build(BuildContext context) {
+  State<CardPet> createState() => CardPetState();
+}
 
-  print(images[0].toString());
+class CardPetState extends State<CardPet> {
+  initState() {
+    super.initState();
+    teste();
+  }
+
+  void teste() async {
+    // print("testetesad");
+    var response = await http.head(Uri.parse(widget.images[0]));
+    print(response.body);
+    if (response.statusCode != 200) {
+      setState(() {
+        widget.images[0] =
+            "https://cdn-icons-png.flaticon.com/512/3142/3142945.png";
+      });
+    }
+  }
+
+  Widget build(BuildContext context) {
+    // print(images[0].toString());
     return GestureDetector(
       child: Padding(
         padding: const EdgeInsets.all(8.0),
@@ -31,7 +47,12 @@ class CardPet extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Image.network(images[0].toString(), height: 100, width: 220, fit: BoxFit.cover,),
+                Image.network(
+                  widget.images[0].toString(),
+                  height: 100,
+                  width: 220,
+                  fit: BoxFit.cover,
+                ),
                 Row(
                   children: [
                     Container(
@@ -39,7 +60,7 @@ class CardPet extends StatelessWidget {
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
-                          Text(name,
+                          Text(widget.name,
                               style: const TextStyle(
                                   fontSize: 16, fontWeight: FontWeight.bold)),
                           const Row(

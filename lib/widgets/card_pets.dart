@@ -8,8 +8,17 @@ import 'package:http/http.dart' as http;
 class CardPet extends StatefulWidget {
   final String name;
   final List<dynamic> images;
+  final int age;
+  final double weight;
+  final String color;
   // final List<String> images;
-  const CardPet({super.key, required this.name, required this.images});
+  const CardPet(
+      {super.key,
+      required this.name,
+      required this.images,
+      required this.age,
+      required this.weight,
+      required this.color});
 
   @override
   State<CardPet> createState() => CardPetState();
@@ -18,20 +27,20 @@ class CardPet extends StatefulWidget {
 class CardPetState extends State<CardPet> {
   initState() {
     super.initState();
-    teste();
+    // teste();
   }
 
-  void teste() async {
-    // print("testetesad");
-    var response = await http.head(Uri.parse(widget.images[0]));
-    print(response.body);
-    if (response.statusCode != 200) {
-      setState(() {
-        widget.images[0] =
-            "https://cdn-icons-png.flaticon.com/512/3142/3142945.png";
-      });
-    }
-  }
+  // void teste() async {
+  //   // print("testetesad");
+  //   var response = await http.head(Uri.parse(widget.images[0]));
+  //   print(response.body);
+  //   if (response.statusCode != 200) {
+  //     setState(() {
+  //       widget.images[0] =
+  //           "https://cdn-icons-png.flaticon.com/512/3142/3142945.png";
+  //     });
+  //   }
+  // }
 
   Widget build(BuildContext context) {
     // print(images[0].toString());
@@ -86,8 +95,14 @@ class CardPetState extends State<CardPet> {
             )),
       ),
       onTap: () {
-        Navigator.of(context)
-            .push(MaterialPageRoute(builder: (context) => const PetDetails()));
+        Navigator.of(context).push(MaterialPageRoute(
+            builder: (context) => PetDetails(
+                  name: widget.name,
+                  image: widget.images[0].toString(),
+                  weight: widget.weight,
+                  color: widget.color,
+                  age: widget.age,
+                )));
       },
     );
   }

@@ -63,10 +63,11 @@ class HomeScreenState extends State<HomeScreen> {
 
     var url =
         "https://pet-adopt-dq32j.ondigitalocean.app/user/${idUser.toString()}";
-    var response = await client.get(Uri.parse(url));
+    var response = await client
+        .get(Uri.parse(url), headers: {'Authorization': 'bearer ${token}'});
     var responseData = jsonDecode(response.body);
     // print(localStorage.getItem("token"));
-    // print(responseData['user']['name']);
+    print(responseData);
     setState(() {
       nameUser = responseData['user']['name'];
     });
@@ -127,14 +128,19 @@ class HomeScreenState extends State<HomeScreen> {
                 crossAxisCount: 2,
                 childAspectRatio: 0.9,
               ),
-              itemBuilder: (context, index)  {
+              itemBuilder: (context, index) {
                 List<dynamic> images = pets[index]['images'];
 
-                
                 // print(images[0]);
                 // Teste se retornou ao commit antigo
                 // print(images);
-                return CardPet(name: pets[index]['name'], images: images);
+                return CardPet(
+                  name: pets[index]['name'],
+                  images: images,
+                  age: pets[index]['age'],
+                  weight:  pets[index]['weight'].toDouble(),
+                  color: pets[index]['color'],
+                );
               },
             ),
 

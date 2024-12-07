@@ -22,16 +22,14 @@ class _FavoritesScreenState extends State<FavoritesScreen> {
 
     var token = localStorage.getItem("token");
 
-    if(token == null){
+    if (token == null) {
       print("não chegou o token");
     }
     var url = 'https://pet-adopt-dq32j.ondigitalocean.app/pet/mypets';
 
     try {
-      var response = await client.get(
-        Uri.parse(url),
-        headers: {'Authorization': 'Bearer ${token}'}
-      );
+      var response = await client
+          .get(Uri.parse(url), headers: {'Authorization': 'Bearer ${token}'});
 
       var responseData = jsonDecode(response.body);
 
@@ -51,6 +49,7 @@ class _FavoritesScreenState extends State<FavoritesScreen> {
   void initState() {
     getPets();
   }
+
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -89,7 +88,13 @@ class _FavoritesScreenState extends State<FavoritesScreen> {
 
                 // Teste se retornou ao commit antigo
                 // print(images);
-                return CardPet(name: pets[index]['name'], images: images);
+                return CardPet(
+                  name: pets[index]['name'],
+                  images: images,
+                  age: pets[index]['age'],
+                  weight: pets[index]['weight'],
+                  color: pets[index]['color'],
+                );
               },
             ),
           ],

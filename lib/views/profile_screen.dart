@@ -17,6 +17,7 @@ class ProfileScreen extends StatefulWidget {
 }
 
 String nameUser = "";
+String emailUser = "";
 
 class _ProfileScreenState extends State<ProfileScreen> {
   void getUser() async {
@@ -34,12 +35,14 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
     var url =
         "https://pet-adopt-dq32j.ondigitalocean.app/user/${idUser.toString()}";
-    var response = await client.get(Uri.parse(url));
+    var response = await client
+        .get(Uri.parse(url), headers: {'Authorization': 'bearer ${token}'});
     var responseData = jsonDecode(response.body);
     // print(localStorage.getItem("token"));
-    // print(responseData['user']['name']);
+    print(responseData['user']['name']);
     setState(() {
       nameUser = responseData['user']['name'];
+      emailUser = responseData['user']['email'];
     });
   }
 
@@ -96,20 +99,23 @@ class _ProfileScreenState extends State<ProfileScreen> {
                               ],
                             ),
                             Container(
-                              margin: const EdgeInsets.only(left: 20),
-                              child: const Row(
+                              margin: const EdgeInsets.only(left: 10),
+                              child: Row(
                                 mainAxisAlignment: MainAxisAlignment.start,
                                 children: [
                                   Icon(
-                                    Icons.location_on,
+                                    Icons.email,
                                     color: Color.fromRGBO(72, 72, 72, 0.612),
                                   ),
-                                  Text(
-                                    "São Paulo, Brasil",
-                                    style: TextStyle(
-                                        fontSize: 16,
-                                        color:
-                                            Color.fromRGBO(72, 72, 72, 0.612)),
+                                  Container(
+                                    margin: EdgeInsets.only(left: 5),
+                                    child: Text(
+                                      emailUser,
+                                      style: TextStyle(
+                                          fontSize: 16,
+                                          color: Color.fromRGBO(
+                                              72, 72, 72, 0.612)),
+                                    ),
                                   ),
                                 ],
                               ),
@@ -204,7 +210,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                             child: const Row(
                               children: [
                                 Text(
-                                  "Pets Favorites",
+                                  "My pets",
                                   style: TextStyle(fontSize: 20),
                                 ),
                               ],

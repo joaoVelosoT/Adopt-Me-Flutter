@@ -72,10 +72,10 @@ class CardPetState extends State<CardPet> {
                           Text(widget.name,
                               style: const TextStyle(
                                   fontSize: 16, fontWeight: FontWeight.bold)),
-                          const Row(
+                           Row(
                             children: [
                               Text(
-                                "1 Year",
+                                "${widget.age} Year",
                                 style: TextStyle(
                                     fontSize: 14,
                                     color: Color.fromRGBO(72, 72, 72, 0.612)),

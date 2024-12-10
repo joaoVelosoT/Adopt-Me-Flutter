@@ -92,7 +92,7 @@ class _FavoritesScreenState extends State<FavoritesScreen> {
                   name: pets[index]['name'],
                   images: images,
                   age: pets[index]['age'],
-                  weight: pets[index]['weight'],
+                  weight: pets[index]['weight'].toDouble(),
                   color: pets[index]['color'],
                 );
               },

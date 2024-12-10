@@ -78,13 +78,23 @@ class PetDetails extends StatelessWidget {
                 ],
               ),
             ),
-            const Padding(
+            Padding(
               padding: EdgeInsets.all(16.0),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  
-                  CharacteristicPet(),
+                  CharacteristicPet(
+                    title: 'Cor',
+                    subTitle: color,
+                  ),
+                  CharacteristicPet(
+                    title: 'Peso',
+                    subTitle: weight.toString(),
+                  ),
+                  CharacteristicPet(
+                    title: 'Idade',
+                    subTitle: age.toString(),
+                  ),
                 ],
               ),
             ),
